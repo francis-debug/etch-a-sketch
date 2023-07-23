@@ -1,0 +1,98 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  }
+
+body {
+    background-color: #202020;
+}
+
+.console {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #c20000;
+    border: solid #000000;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px #000000;
+    max-height: 720px;
+    max-width: 600px;
+    margin: 40px auto auto;
+}
+
+.title {
+    font-size: 38px;
+    margin-top: 5px;
+    color: #ffd700;
+    font-family: 'Brush Script MT', cursive;
+}
+
+#grid {
+    display: grid;
+    background-color: #c8c8c8;
+    width: 500px;
+    height: 500px;
+    border: 2px solid #000000;
+    background-color: #c8c8c8;
+    border-radius: 8px;
+    box-shadow: inset 0px 0px 4px #000000;
+    margin-bottom: 25px;
+}
+
+.cell {
+    background-color: #c8c8c8;
+}
+.controls {
+    border-radius: 8px;
+    background-color: #8d0000;
+    margin-bottom: 30px;
+    height: 100px;
+    width: 500px;
+}
+
+.controls-top {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    height: 50px;
+}
+
+.controls-bottom {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.btn{
+    color: #ffd700;
+    height: 40px;
+    width: 110px;
+    padding: 0px 4px;
+    margin: 0px 3px;
+    font-size: 16px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background-color: #690000
+}
+
+.btn:hover {
+    background-color: #4b0000;
+}
+
+.btn:active {
+    background-color: #3d0000;
+}
+
+.pixel-size {
+    color: #ffd700;
+    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 15px;
+}
+
+#slider {
+    width: 350px;
+    margin-left: 20px;
+}
