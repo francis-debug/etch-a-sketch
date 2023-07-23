@@ -1,9 +1,10 @@
+// Prepare DOM elements
 const grid = document.getElementById('grid');
 const slider = document.getElementById('slider');
 const classicBtn = document.getElementById('classic-btn');
 const rainbowBtn = document.getElementById('rainbow-btn');
 const customBtn = document.getElementById('custom-btn');
-const customColor = document.getElementById('custom-color')
+const customColor = document.getElementById('custom-color');
 const resetBtn = document.getElementById('reset-btn');
 
 // Set up default grid
@@ -12,17 +13,39 @@ let gridSize = 50;
 createGrid();
 slider.addEventListener('input', createGrid);
 
-classicBtn.onclick = function () {mode = 'classic'}
-rainbowBtn.onclick = function () {mode = 'rainbow'};
-customBtn.onclick = function () {mode = 'custom'};
+// Create button functionality and styling
+classicBtn.onclick = function () {
+    mode = 'classic';
+    classicBtn.style.backgroundColor = '#3d0000'
+    rainbowBtn.style.backgroundColor = '#690000'
+    customBtn.style.backgroundColor = '#690000'
+};
+
+rainbowBtn.onclick = function () {
+    mode = 'rainbow';
+    classicBtn.style.backgroundColor = '#690000'
+    rainbowBtn.style.backgroundColor = '#3d0000'
+    customBtn.style.backgroundColor = '#690000'
+};
+
+customBtn.onclick = function () {
+    mode = 'custom';
+    classicBtn.style.backgroundColor = '#690000'
+    rainbowBtn.style.backgroundColor = '#690000'
+    customBtn.style.backgroundColor = '#3d0000'
+};
+
 resetBtn.onclick = function () {createGrid();};
 
+// This is the main function to create a grid
 function createGrid() {
     clearGrid();
     setGridSize();
     setGridDimensions(gridSize);
     fillGrid(gridSize);
 }
+
+// These are its sub-functions:
 
 function clearGrid() {
     while (grid.hasChildNodes()) {
@@ -47,11 +70,11 @@ function fillGrid (gridSize) {
                 event.target.style.opacity = getComputedStyle(event.target).opacity - .3
             }
             else if (mode == 'rainbow') {
-                event.target.style.backgroundColor = getRandomColor()
+                event.target.style.backgroundColor = getRandomColor();
                 event.target.style.opacity = 1
             }
             else if (mode == 'custom') {
-                event.target.style.backgroundColor = `${customColor.value}`
+                event.target.style.backgroundColor = `${customColor.value}`;
                 event.target.style.opacity = 1
             }
         })

@@ -1,2 +1,2 @@
 # etch-a-sketch
-Practice creating an etch-a-sketch with The Odin Project
+Create an etch-a-sketch as part of The Odin Project curriculum
