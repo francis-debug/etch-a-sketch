@@ -1,12 +1,21 @@
 const grid = document.getElementById('grid');
 const slider = document.getElementById('slider');
-const pixel = document.querySelector(".cell");
-const resetBtn = document.getElementById("reset-btn");
+const classicBtn = document.getElementById('classic-btn');
+const rainbowBtn = document.getElementById('rainbow-btn');
+const customBtn = document.getElementById('custom-btn');
+const customColor = document.getElementById('custom-color')
+const resetBtn = document.getElementById('reset-btn');
 
+// Set up default grid
+let mode = 'classic';
 let gridSize = 50;
 createGrid();
-slider.addEventListener("input", createGrid);
-resetBtn.onclick = function () {createGrid();}
+slider.addEventListener('input', createGrid);
+
+classicBtn.onclick = function () {mode = 'classic'}
+rainbowBtn.onclick = function () {mode = 'rainbow'};
+customBtn.onclick = function () {mode = 'custom'};
+resetBtn.onclick = function () {createGrid();};
 
 function createGrid() {
     clearGrid();
@@ -21,9 +30,7 @@ function clearGrid() {
     }
 }
 
-function setGridSize() {
-    gridSize = slider.value;
-}
+function setGridSize() {gridSize = slider.value;}
 
 function setGridDimensions(gridSize) {
     grid.style.cssText = `grid-template-columns: repeat(${gridSize}, 1fr);
@@ -35,8 +42,29 @@ function fillGrid (gridSize) {
         let cell = document.createElement('div');
         cell.classList.add('cell');
         grid.appendChild(cell);
-        cell.addEventListener('mouseover', function(event){
-            event.target.style.backgroundColor = 'black';
+        cell.addEventListener('mouseenter', function(event){
+            if (mode == 'classic') {
+                event.target.style.opacity = getComputedStyle(event.target).opacity - .3
+            }
+            else if (mode == 'rainbow') {
+                event.target.style.backgroundColor = getRandomColor()
+                event.target.style.opacity = 1
+            }
+            else if (mode == 'custom') {
+                event.target.style.backgroundColor = `${customColor.value}`
+                event.target.style.opacity = 1
+            }
         })
     }
 }
+
+function getRandomColor () {
+    let randomNum = Math.random() * 6;
+         if (randomNum <= 1) {return '#d12229'}
+    else if (randomNum <= 2) {return '#f68a1e'}
+    else if (randomNum <= 3) {return '#fde01a'}
+    else if (randomNum <= 4) {return '#007940'}
+    else if (randomNum <= 5) {return '#24408e'}
+    else if (randomNum <= 6) {return '#732982'}
+}
+
