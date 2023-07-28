@@ -4,6 +4,13 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
   }
 
+.wrapper {
+    aspect-ratio: 2 / 3;
+    max-width: 100vh;
+    max-height: 100vh;
+    margin: auto;
+}
+
 .console {
     display: flex;
     flex: 0 0 auto;
@@ -11,16 +18,17 @@
     align-items: center;
     background-color: #c20000;
     border: 1px solid #000000;
-    border-radius: 6px;
-    max-height: 720px;
-    width: 600px;
-    margin: 40px auto auto;
+    border-radius: 5px;
+    height: 80%;
+    width: 100%;
+    margin: 5% auto 3%;
 }
 
 .title {
-    margin-top: 6px;
     color: #ffd700;
-    font-size: 40px;
+    font-size: 5vh;
+    height: 7%;
+    margin: 2% auto 1%;
     font-family: 'Brush Script MT', cursive;
 }
 
@@ -28,10 +36,10 @@
     display: grid;
     background-color: #000000;
     border: 1px solid #000000;
-    border-radius: 6px;
-    width: 500px;
-    height: 500px;
-    margin-bottom: 25px;
+    border-radius: 5px;
+    margin: 0 auto 3.83%;
+    width: 83%;
+    height: 69.17%; 
 }
 
 .cell {
@@ -39,35 +47,35 @@
     opacity: 1;
 }
 .controls {
-    border-radius: 8px;
+    border-radius: 5px;
     background-color: #8d0000;
-    margin-bottom: 30px;
-    height: 100px;
-    width: 500px;
+    margin: 0 auto 4%;
+    height: 14%;
+    width: 83.33%;
 }
 
 .controls-top {
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
-    height: 50px;
+    height: 50%;
 }
 
 .controls-bottom {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 50%;
 }
 
 .btn{
     background-color: #690000;
     border: 1px solid #4b0000;
-    border-radius: 8px;
+    border-radius: 5px;
     color: #ffd700;
-    font-size: 16px;
-    height: 40px;
-    width: 110px;
-    margin: 0px 3px;
+    font-size: 2vh;
+    height: 80%;
+    width: 22%;
+    margin: auto;
 }
 
 .btn:hover {
@@ -80,35 +88,29 @@
     background-color: #3d0000;
 }
 
-.custom-btn {
-    padding-right: 0px;
-}
-
 #custom-color {
-    width: 18px;
-    height: 18px;
+    width: 2vh;
+    height: 2vh;
     border-color: #690000;
 }
 
 .pixel-size {
     color: #ffd700;
-    font-size: 16px;
+    font-size: 2vh;
     text-align: center;
-    width: 100px;
-    margin-left: 17px;
+    width: 20%;
 }
 
 #slider {
-    width: 350px;
-    margin-left: 20px;
+    width: 75%
 }
 
 .signature {
-    margin: 0 auto;
-    text-align: center;
-    font-size: 22px;
-    display: block;
     text-decoration: none;
+    margin: 0 auto 2%;
+    text-align: center;
+    font-size: 3vh;
+    display: block;
     color: black;
 }
 
@@ -119,12 +121,13 @@
 }
 
 .gh-logo {
-    height: 28px;
+    height: 3vh;
     position: relative;
-    top: 4px;
+    top: .3vh;
 }
 
 .code-link {
+    font-size: 2vh;
     margin: 0 auto;
     text-align: center;
     display: block;

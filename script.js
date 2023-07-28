@@ -90,4 +90,3 @@ function getRandomColor () {
     else if (randomNum <= 5) {return '#24408e'}
     else if (randomNum <= 6) {return '#732982'}
 }
-
