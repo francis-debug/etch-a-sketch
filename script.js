@@ -6,6 +6,9 @@ const rainbowBtn = document.getElementById('rainbow-btn');
 const customBtn = document.getElementById('custom-btn');
 const customColor = document.getElementById('custom-color');
 const resetBtn = document.getElementById('reset-btn');
+const title = document.querySelector('.title');
+const main = document.getElementById('main');
+const signature = document.getElementById('signature');
 
 // Set up default grid
 let mode = 'classic';
@@ -90,3 +93,18 @@ function getRandomColor () {
     else if (randomNum <= 5) {return '#24408e'}
     else if (randomNum <= 6) {return '#732982'}
 }
+
+resizeText()
+window.addEventListener('resize', resizeText);
+
+function resizeText () {
+
+    if (main.offsetHeight < window.innerHeight) {
+        title.style.fontSize = '10vw';
+        signature.style.fontSize = '4vw';
+    }
+    else {
+        title.style.fontSize = '7vh';
+        signature.style.fontSize = '3vh';
+    }
+};
