@@ -1,14 +1,14 @@
 // Prepare DOM elements
-const grid = document.getElementById('grid');
-const slider = document.getElementById('slider');
-const classicBtn = document.getElementById('classic-btn');
-const rainbowBtn = document.getElementById('rainbow-btn');
-const customBtn = document.getElementById('custom-btn');
-const customColor = document.getElementById('custom-color');
-const resetBtn = document.getElementById('reset-btn');
+const grid = document.querySelector('.grid');
+const slider = document.querySelector('.slider');
+const classicBtn = document.querySelector('.classic-btn');
+const rainbowBtn = document.querySelector('.rainbow-btn');
+const customBtn = document.querySelector('.custom-btn');
+const customColor = document.querySelector('.custom-color');
+const resetBtn = document.querySelector('.reset-btn');
 const title = document.querySelector('.title');
-const main = document.getElementById('main');
-const signature = document.getElementById('signature');
+const main = document.querySelector('.main');
+const signature = document.querySelector('.signature');
 
 // Set up default grid
 let mode = 'classic';
