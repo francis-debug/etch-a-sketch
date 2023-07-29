@@ -103,6 +103,9 @@ function fillGrid (gridSize) {
                     touchPixel.style.backgroundColor = `${customColor.value}`;
                     touchPixel.style.opacity = 1
                 }
+            else if (grid.contains(touchPixel) = 'false') {
+                touchPixel.addEventListener('touchmove', function(e) {e.preventDefault()}, { passive: false });
+            }
         }})
         
     }
