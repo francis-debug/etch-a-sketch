@@ -16,7 +16,14 @@ const ghLogo = document.querySelector('.gh-logo');
 let mode = 'classic';
 let gridSize = 50;
 createGrid();
-slider.addEventListener('input', createGrid);
+
+// Resize text based on viewport
+resizeText()
+window.addEventListener('resize', resizeText);
+
+// Prevent screen dragging while touching grid
+grid.addEventListener('touchstart', function(e) {e.preventDefault()}, { passive: false });
+grid.addEventListener('touchmove', function(e) {e.preventDefault()}, { passive: false });
 
 // Create button functionality and styling
 classicBtn.onclick = function () {
@@ -41,6 +48,8 @@ customBtn.onclick = function () {
 };
 
 resetBtn.onclick = function () {createGrid();};
+
+slider.addEventListener('input', createGrid);
 
 // This is the main function to create a grid
 function createGrid() {
@@ -121,14 +130,7 @@ function getRandomColor () {
     else if (randomNum <= 6) {return '#732982'}
 }
 
-// Prevent dragging on touchscreens
-
-grid.addEventListener('touchstart', function(e) {e.preventDefault()}, { passive: false });
-grid.addEventListener('touchmove', function(e) {e.preventDefault()}, { passive: false });
-
 // Resize text dynamically as the window resizes
-resizeText()
-window.addEventListener('resize', resizeText);
 function resizeText () {
     // When window aspect ratio is taller than main wrapper
     // Font sizes are relative to viewport width
@@ -140,6 +142,7 @@ function resizeText () {
         customColor.style.width = '3vw';
         text.forEach(word => {
             word.style.fontSize = '3vw';
+        slider.max = '50'; // Set upper pixel limit at 50 to improve mobile performance
         });
     }
     // Otherwise font sizes are relative to viewport height
