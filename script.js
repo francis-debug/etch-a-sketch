@@ -66,10 +66,12 @@ function setGridDimensions(gridSize) {
 }
 
 function fillGrid (gridSize) {
+    // Fill grid based on slider value
     for (i = 0; i < (gridSize * gridSize); i++) {
         let cell = document.createElement('div');
         cell.classList.add('cell');
         grid.appendChild(cell);
+        // Desktop: Give cells mouseover behavior based on current setting
         cell.addEventListener('mouseenter', function(event){
             if (mode == 'classic') {
                 event.target.style.opacity = getComputedStyle(event.target).opacity - .3
@@ -83,6 +85,24 @@ function fillGrid (gridSize) {
                 event.target.style.opacity = 1
             }
         })
+        // Mobile: Give cells touchmove behavior based on current setting
+        cell.addEventListener('touchmove', function(e){
+            let xPos = e.touches[0].pageX;
+            let yPos = e.touches[0].pageY;
+            let touchPixel = document.elementFromPoint(xPos, yPos)
+            if (mode == 'classic') {
+                touchPixel.style.opacity = getComputedStyle(touchPixel).opacity - .3
+            }
+            else if (mode == 'rainbow') {
+                touchPixel.style.backgroundColor = getRandomColor();
+                touchPixel.style.opacity = 1
+            }
+            else if (mode == 'custom') {
+                touchPixel.style.backgroundColor = `${customColor.value}`;
+                touchPixel.style.opacity = 1
+            }
+        })
+        
     }
 }
 
@@ -98,22 +118,17 @@ function getRandomColor () {
 
 // Prevent dragging on touchscreens
 
-function stopDrag(e) {
-    e.preventDefault(); 
-};
-
-document.addEventListener("touchmove", stopDrag, {passive: false});
-
+grid.addEventListener('touchstart', function(e) {e.preventDefault()}, { passive: false });
+grid.addEventListener('touchmove', function(e) {e.preventDefault()}, { passive: false });
 
 // Resize text dynamically as the window resizes
 resizeText()
 window.addEventListener('resize', resizeText);
-
 function resizeText () {
     // When window aspect ratio is taller than main wrapper
     // Font sizes are relative to viewport width
     if (main.offsetHeight < window.innerHeight) {
-        title.style.fontSize = '10vw';
+        title.style.fontSize = '8vw';
         signature.style.fontSize = '4vw';
         ghLogo.style.height = '4vw';
         customColor.style.height = '3vw';
@@ -124,7 +139,7 @@ function resizeText () {
     }
     // Otherwise font sizes are relative to viewport height
     else {
-        title.style.fontSize = '7vh';
+        title.style.fontSize = '6vh';
         signature.style.fontSize = '3vh';
         ghLogo.style.height = '3vh';
         customColor.style.height = '2vh';
