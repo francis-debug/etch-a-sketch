@@ -1,14 +1,16 @@
 // Prepare DOM elements
+const main = document.querySelector('.main');
+const title = document.querySelector('.title');
 const grid = document.querySelector('.grid');
-const slider = document.querySelector('.slider');
 const classicBtn = document.querySelector('.classic-btn');
 const rainbowBtn = document.querySelector('.rainbow-btn');
 const customBtn = document.querySelector('.custom-btn');
 const customColor = document.querySelector('.custom-color');
 const resetBtn = document.querySelector('.reset-btn');
-const title = document.querySelector('.title');
-const main = document.querySelector('.main');
+const slider = document.querySelector('.slider');
+const text = document.querySelectorAll('.text');
 const signature = document.querySelector('.signature');
+const ghLogo = document.querySelector('.gh-logo');
 
 // Set up default grid
 let mode = 'classic';
@@ -81,6 +83,19 @@ function fillGrid (gridSize) {
                 event.target.style.opacity = 1
             }
         })
+        cell.addEventListener(' ', function(event){
+            if (mode == 'classic') {
+                event.target.style.opacity = getComputedStyle(event.target).opacity - .3
+            }
+            else if (mode == 'rainbow') {
+                event.target.style.backgroundColor = getRandomColor();
+                event.target.style.opacity = 1
+            }
+            else if (mode == 'custom') {
+                event.target.style.backgroundColor = `${customColor.value}`;
+                event.target.style.opacity = 1
+            }
+        })
     }
 }
 
@@ -94,17 +109,53 @@ function getRandomColor () {
     else if (randomNum <= 6) {return '#732982'}
 }
 
+// Prevent mobile devices from scrolling on grid
+function stopTouchScrolling(grid){
+document.body.addEventListener("touchstart", function (e) {
+    if (e.target == grid) {
+        e.preventDefault();
+    }
+}, { passive: false });
+document.body.addEventListener("touchend", function (e) {
+    if (e.target == grid) {
+        e.preventDefault();
+    }
+}, { passive: false });
+document.body.addEventListener("touchmove", function (e) {
+    if (e.target == grid) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
+}
+
+// Resize text dynamically as the window resizes
+
 resizeText()
 window.addEventListener('resize', resizeText);
 
 function resizeText () {
-
+    // When window aspect ratio is taller than main wrapper
+    // Font sizes are relative to viewport width
     if (main.offsetHeight < window.innerHeight) {
         title.style.fontSize = '10vw';
         signature.style.fontSize = '4vw';
+        ghLogo.style.height = '4vw';
+        customColor.style.height = '3vw';
+        customColor.style.width = '3vw';
+        text.forEach(word => {
+            word.style.fontSize = '3vw';
+        });
     }
+    // Otherwise font sizes are relative to viewport height
     else {
         title.style.fontSize = '7vh';
         signature.style.fontSize = '3vh';
+        ghLogo.style.height = '3vh';
+        customColor.style.height = '2vh';
+        customColor.style.width = '2vh';
+        text.forEach(word => {
+            word.style.fontSize = '2vh';
+        });
     }
 };

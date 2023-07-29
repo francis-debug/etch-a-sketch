@@ -9,7 +9,8 @@
     max-width: 100vh;
     max-height: 100vh;
     margin: auto;
-    border: 1px solid green;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
 }
 
 .console {
@@ -111,7 +112,7 @@
     text-decoration: none;
     margin: 0 auto 2%;
     text-align: center;
-    font-size: 3vh;
+    font-size: 4vh;
     display: block;
     color: black;
 }
