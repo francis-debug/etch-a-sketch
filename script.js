@@ -89,19 +89,21 @@ function fillGrid (gridSize) {
         cell.addEventListener('touchmove', function(e){
             let xPos = e.touches[0].pageX;
             let yPos = e.touches[0].pageY;
-            let touchPixel = document.elementFromPoint(xPos, yPos)
-            if (mode == 'classic') {
-                touchPixel.style.opacity = getComputedStyle(touchPixel).opacity - .3
-            }
-            else if (mode == 'rainbow') {
-                touchPixel.style.backgroundColor = getRandomColor();
-                touchPixel.style.opacity = 1
-            }
-            else if (mode == 'custom') {
-                touchPixel.style.backgroundColor = `${customColor.value}`;
-                touchPixel.style.opacity = 1
-            }
-        })
+            let touchPixel = document.elementFromPoint(xPos, yPos);
+            if (grid.contains(touchPixel) && touchPixel !== grid){
+
+                if (mode == 'classic') {
+                    touchPixel.style.opacity = getComputedStyle(touchPixel).opacity - .3
+                }
+                else if (mode == 'rainbow') {
+                    touchPixel.style.backgroundColor = getRandomColor();
+                    touchPixel.style.opacity = 1
+                }
+                else if (mode == 'custom') {
+                    touchPixel.style.backgroundColor = `${customColor.value}`;
+                    touchPixel.style.opacity = 1
+                }
+        }})
         
     }
 }
