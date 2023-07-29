@@ -83,19 +83,6 @@ function fillGrid (gridSize) {
                 event.target.style.opacity = 1
             }
         })
-        cell.addEventListener(' ', function(event){
-            if (mode == 'classic') {
-                event.target.style.opacity = getComputedStyle(event.target).opacity - .3
-            }
-            else if (mode == 'rainbow') {
-                event.target.style.backgroundColor = getRandomColor();
-                event.target.style.opacity = 1
-            }
-            else if (mode == 'custom') {
-                event.target.style.backgroundColor = `${customColor.value}`;
-                event.target.style.opacity = 1
-            }
-        })
     }
 }
 
@@ -109,28 +96,16 @@ function getRandomColor () {
     else if (randomNum <= 6) {return '#732982'}
 }
 
-// Prevent mobile devices from scrolling on grid
-function stopTouchScrolling(grid){
-document.body.addEventListener("touchstart", function (e) {
-    if (e.target == grid) {
-        e.preventDefault();
-    }
-}, { passive: false });
-document.body.addEventListener("touchend", function (e) {
-    if (e.target == grid) {
-        e.preventDefault();
-    }
-}, { passive: false });
-document.body.addEventListener("touchmove", function (e) {
-    if (e.target == grid) {
-        e.preventDefault();
-    }
-}, { passive: false });
+// Prevent dragging on touchscreens
 
-}
+function stopDrag(e) {
+    e.preventDefault(); 
+};
+
+document.addEventListener("touchmove", stopDrag, {passive: false});
+
 
 // Resize text dynamically as the window resizes
-
 resizeText()
 window.addEventListener('resize', resizeText);
 
