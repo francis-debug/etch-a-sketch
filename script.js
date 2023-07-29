@@ -100,8 +100,7 @@ function fillGrid (gridSize) {
             let yPos = e.touches[0].pageY;
             let touchPixel = document.elementFromPoint(xPos, yPos);
             if (grid.contains(touchPixel) && touchPixel !== grid){
-
-                if (mode == 'classic') {
+                     if (mode == 'classic') {
                     touchPixel.style.opacity = getComputedStyle(touchPixel).opacity - .3
                 }
                 else if (mode == 'rainbow') {
@@ -116,7 +115,6 @@ function fillGrid (gridSize) {
                 touchPixel.addEventListener('touchmove', function(e) {e.preventDefault()}, { passive: false });
             }
         }})
-        
     }
 }
 
