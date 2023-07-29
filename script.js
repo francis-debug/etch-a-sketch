@@ -80,7 +80,7 @@ function fillGrid (gridSize) {
         let cell = document.createElement('div');
         cell.classList.add('cell');
         grid.appendChild(cell);
-        // Desktop: Give cells mouseover behavior based on current setting
+        // Mouse: Give cells mouseover behavior based on current setting
         cell.addEventListener('mouseenter', function(event){
             if (mode == 'classic') {
                 event.target.style.opacity = getComputedStyle(event.target).opacity - .3
@@ -94,7 +94,7 @@ function fillGrid (gridSize) {
                 event.target.style.opacity = 1
             }
         })
-        // Mobile: Give cells touchmove behavior based on current setting
+        // Touchscreen: Give cells touchmove behavior based on current setting
         cell.addEventListener('touchmove', function(e){
             let xPos = e.touches[0].pageX;
             let yPos = e.touches[0].pageY;
@@ -141,9 +141,9 @@ function resizeText () {
         customColor.style.height = '3vw';
         customColor.style.width = '3vw';
         text.forEach(word => {
-            word.style.fontSize = '3vw';
-        slider.max = '50'; // Set upper pixel limit at 50 to improve mobile performance
-        });
+            word.style.fontSize = '3vw'});
+        slider.max = '50';
+        slider.value= '25';
     }
     // Otherwise font sizes are relative to viewport height
     else {
@@ -153,7 +153,8 @@ function resizeText () {
         customColor.style.height = '2vh';
         customColor.style.width = '2vh';
         text.forEach(word => {
-            word.style.fontSize = '2vh';
-        });
+            word.style.fontSize = '2vh';})
+        slider.max = '100';
+        slider.value = '50';
     }
 };
