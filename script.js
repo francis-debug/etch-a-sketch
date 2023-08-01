@@ -140,7 +140,7 @@ function resizeText () {
         customColor.style.width = '3vw';
         text.forEach(word => {
             word.style.fontSize = '3vw'});
-        slider.max = '50';
+        slider.max = '50'; // Limit pixel amount to improve mobile performance
         slider.value= '25';
     }
     // Otherwise font sizes are relative to viewport height
